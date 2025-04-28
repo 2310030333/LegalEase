@@ -19,6 +19,12 @@ import Dashboard from './components/dashboard';
 import Chatbot from './components/Chatbot';
 import ClientSearch from './components/SearchClients';
 import DocumentSearch from './components/LegalDocuments';
+import ClientDashboard from './components/ClientDashboard';
+import SearchLawyer from './components/SearchLawyer';
+import Appointments from './components/Appointments';
+import AllCases from './components/AllCases';
+import NotificationViewer from './components/NotificationViewer';
+
 const App = () => {
   return (
     <Router>
@@ -49,6 +55,11 @@ const App = () => {
           <Route path="/lawyer/dashboard" element={<Dashboard />} /> 
           <Route path="/lawyer/searchclients" element={<ClientSearch />}/>
           <Route path="/lawyer/searchdocuments" element={<DocumentSearch />}/>
+          <Route path="/clientdashboard" element={<ClientDashboard />} />
+          <Route path="/searchlawyer" element={<SearchLawyer />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/allcases" element={<AllCases />} />
+          <Route path="/notifications" element={<NotificationViewer />} />
         </Routes>
         <Footer />
       </div>
