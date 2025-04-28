@@ -23,23 +23,27 @@ import ServiceCard from './ServiceCard';
 import TestimonialCard from './TestimonialCard';
 import AttorneyCard from './AttorneyCard';
 
+import AashrithaImage from '../assets/Aashritha.png';
+import ManavImage from '../assets/Manav.png';
+import DeepikaImage from '../assets/Deepika.png';
+
 // Attorneys Section
 const Attorneys = () => {
     const attorneysData = [
       {
-        name: 'Michael Brown',
-        title: 'Senior Partner',
-        image: 'https://placehold.co/450x650/EEE/31343C',  // Placeholder
+        name: 'Sri Aashritha',
+        title: '',
+        image: AashrithaImage,
       },
       {
-        name: 'Jessica Davis',
-        title: 'Managing Partner',
-        image: 'https://placehold.co/450x650/EEE/31343C',  // Placeholder
+        name: 'Manav',
+        title: '',
+        image: ManavImage,
       },
       {
-        name: 'Robert Wilson',
-        title: 'Associate Attorney',
-        image: 'https://placehold.co/450x650/EEE/31343C',  // Placeholder
+        name: 'Deepika',
+        title: '',
+        image: DeepikaImage,
       },
     ];
   
@@ -47,8 +51,8 @@ const Attorneys = () => {
       <section className="bg-gray-950 py-24 md:py-36">
         <div className="container mx-auto px-4">
           <SectionTitle
-            title="Our Experienced Attorneys"
-            subtitle="Meet our team of dedicated legal professionals."
+            title="Meet the Key Developers"
+            subtitle="A dedicated team with proven results."
             align="center"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">  {/* Increased gap */}
@@ -61,4 +65,4 @@ const Attorneys = () => {
     );
   };
 
-  export default Attorneys;
+export default Attorneys;
