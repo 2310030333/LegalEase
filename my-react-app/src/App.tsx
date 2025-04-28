@@ -14,29 +14,41 @@ import LawyerRegistration from './components/LawyerRegistration';
 import StudentLogin from './components/StudentLogin';
 import LawyerLogin from './components/LawyerLogin';
 import ClientLogin from './components/ClientLogin';
-
+import LawyerOnBoarding from './components/LawyerOnboarding'; 
+import Dashboard from './components/dashboard';
+import Chatbot from './components/Chatbot';
+import ClientSearch from './components/SearchClients';
+import DocumentSearch from './components/LegalDocuments';
 const App = () => {
   return (
     <Router>
       <div className="bg-gray-950">
         <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <AboutUs />
-              <Services />
-              <Testimonials />
-              <Attorneys />
-              <Contact />
-            </>
-          } />
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <AboutUs />
+                <Services />
+                <Testimonials />
+                <Attorneys />
+                <Contact />
+              </>
+            }
+          />
           <Route path="/user-type-selection" element={<UserTypeSelection />} />
+          <Route path="/lawyer/chatbot" element={<Chatbot />} />
           <Route path="/register/student" element={<StudentRegistration />} />
           <Route path="/register/client" element={<ClientRegistration />} />
           <Route path="/register/lawyer" element={<LawyerRegistration />} />
           <Route path="/login/student" element={<StudentLogin />} />
           <Route path="/login/lawyer" element={<LawyerLogin />} />
           <Route path="/login/client" element={<ClientLogin />} />
+          <Route path="/lawyer/update-profile" element={<LawyerOnBoarding />} /> {/* ✅ New route */}
+          <Route path="/lawyer/dashboard" element={<Dashboard />} /> 
+          <Route path="/lawyer/searchclients" element={<ClientSearch />}/>
+          <Route path="/lawyer/searchdocuments" element={<DocumentSearch />}/>
         </Routes>
         <Footer />
       </div>

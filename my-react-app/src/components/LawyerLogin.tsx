@@ -5,6 +5,7 @@ import { Input } from './ui/input';
 import { Loader2, ScanFace, LockKeyhole } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LawyerLogin = () => {
   const [activeTab, setActiveTab] = useState<'face' | 'credentials'>('credentials');
@@ -13,6 +14,7 @@ const LawyerLogin = () => {
   const [error, setError] = useState('');
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,8 +31,14 @@ const LawyerLogin = () => {
         password: formData.password,
       });
 
-      console.log('Logged in with credentials:', res.data);
-      // store token or navigate
+      const { _id, profileUpdated, role } = res.data.user;
+      console.log(_id);
+      if (!profileUpdated && role === 'lawyer') {
+        navigate('/lawyer/update-profile', { state: { userId: _id } }); 
+      } else {
+        navigate('/lawyer/dashboard', { state: { userId: _id} });
+      }
+
     } catch (err: any) {
       setError(err.response?.data?.message || 'Login failed');
     } finally {
@@ -41,7 +49,6 @@ const LawyerLogin = () => {
   const handleFaceLogin = async () => {
     setLoading(true);
     setError('');
-
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
@@ -78,14 +85,18 @@ const LawyerLogin = () => {
           return;
         }
 
-        const res = await axios.post('http://localhost:5001/verify-face', {
+        const res = await axios.post('http://localhost:5000/api/auth/login-face', {
           known_encoding: encodingRes.data.encoding,
           unknown_encoding: imageData,
           username: formData.username,
         });
 
-        console.log('Logged in with face:', res.data);
-        // store token or navigate
+        const { _id, profileUpdated, role } = res.data.user;
+        if (!profileUpdated && role === 'lawyer') {
+          navigate('/lawyer/update-profile', { state: { userId: _id } }); 
+        } else {
+          navigate('/lawyer/dashboard', { state: { userId: _id} });
+        }
       }, 2000);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Face login failed');

@@ -14,15 +14,24 @@ const UserSchema = new mongoose.Schema({
   address: { type: String },
   yearsOfExperience: { type: Number },
   specialization: { type: String },
-  barCertificate: {type:String},
+  barCertificate: { type: String },
+  numberOfCases: { type: Number },
+  lawFirm: { type: String },
+  location: { type: String },
 
   // For student
   university: { type: String },
   graduationYear: { type: Number },
-  identityProof: {type: String},
 
   // For client
-  // address is reused
-}, { timestamps: true }); // Optional: adds createdAt & updatedAt
+  identityProof: { type: String },
+
+  // Track whether user has updated their profile after first login
+  profileUpdated: { type: Boolean, default: false },
+
+  // Assuming 'lawyerAssigned' is a string, storing the lawyer's ID
+  lawyerAssigned: { type: String },  // Storing the lawyer ID as a string
+
+}, { timestamps: true });
 
 export default mongoose.model('User', UserSchema);
