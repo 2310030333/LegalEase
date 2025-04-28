@@ -95,7 +95,7 @@ const Contact = () => {
                   custom={0}
               >
                 <MapPin className="w-7 h-7 text-primary" />  {/* Increased icon size */}
-                <span className="text-gray-300 text-lg sm:text-xl">123 Main Street, Anytown, USA</span>  {/* Refined text */}
+                <span className="text-gray-300 text-lg sm:text-xl">KLH Aziz Nagar Hyderabad,India</span>  {/* Refined text */}
               </motion.div>
               <motion.div  className="flex items-center gap-4"
                variants={contactInfoVariants}
@@ -115,7 +115,7 @@ const Contact = () => {
                    custom={2}
               >
                 <Mail className="w-7 h-7 text-primary" />
-                <span className="text-gray-300 text-lg sm:text-xl">info@lawyex.com</span>
+                <span className="text-gray-300 text-lg sm:text-xl">ingo@legalease.com</span>
               </motion.div>
             </div>
           </div>
