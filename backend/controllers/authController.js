@@ -287,7 +287,7 @@ export const acceptNotification = async (req, res) => {
     const updatedClient = await User.findByIdAndUpdate(clientId, { lawyerAssigned: lawyerId });
     console.log(updatedClient);
     // Delete the notification after accepting
-    {/*await Notification.findByIdAndDelete(notifId);*/}
+    await Notification.findByIdAndDelete(notifId);
 
     res.status(200).json({ message: 'Notification accepted and client assigned to lawyer' });
   } catch (err) {
